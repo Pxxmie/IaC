@@ -17,8 +17,9 @@ Ansible is an open-source infrastructure as a code tool.
 - Ansible is often recognised as a simple beginner-friendly tool
   
 - It helps automate the configuration of multiple servers at once, rather than connecting to an individual server and then carrying out your desired task.
+  
+![Alt text](Ansible/images/Iac_ansible.png)
 
-![Alt text](images/Iac_ansible.png)
 # Setting Up Ansible on EC2 Instance
 
 In this document, we are launching an EC2 instance and configuring it with Ansible,
@@ -92,11 +93,11 @@ In this document, we are launching an EC2 instance and configuring it with Ansib
     scp -i "~/.ssh/file.pem" ~/.ssh/tech254.pem ubuntu@<ipinstances>:~/.ssh
      ```
 
-    ![Alt text](images/copying_pemkeys_controller.png)
+    ![Alt text](Ansible/images/copying_pemkeys_controller.png)
 
 - Now we can go back on our controller instance, and check if the pem file has been copied or not by running `ls' inside ~/.ssh.
   
-   ![Alt text](images/copied_key_controller.png)
+   ![Alt text](Ansible/images/copied_key_controller.png)
 
 - Now we need to adjusts the permissions of the pem file on our controller by running the following command, this ensures that the key file is protected and cannot be accessed by others.
   
@@ -123,7 +124,7 @@ In this document, we are launching an EC2 instance and configuring it with Ansib
 
 - Finally, lets copy our pem file from local host to our app instance as we did above. 
   
-  ![Alt text](images/copying_pemkey_to_app.png)
+  ![Alt text](Ansible/images/copying_pemkey_to_app.png)
 
 
 ### Step 6: SSH into Target Instance from Ansible Controller 
@@ -141,4 +142,4 @@ In this document, we are launching an EC2 instance and configuring it with Ansib
 
     In order to succesfully test, I have made a text file in my target instance and tested it through my controller. 
 
-    ![Alt text](<images/Screenshot 2023-10-16 165738.png>)
+    ![Alt text](<Ansible/images/Screenshot 2023-10-16 165738.png>)
