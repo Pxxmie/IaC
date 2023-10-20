@@ -1,0 +1,27 @@
+ ---
+    # This Playbook will Configure BindIP 
+
+    # Target host -db server
+    - hosts: db
+
+    # Gather facts about the host
+     gather_facts: yes
+
+    # Become a superuser to have necessary privileges
+     become: true
+
+    # Update BindIP in the mongod.conf file
+     tasks:
+        - name: Update BindIP in the mongod.conf file
+          replace:
+            path: /etc/mongodb.conf
+            regexp: 'bind_ip = 127.0.0.1'
+            replace: 'bind_ip = 0.0.0.0'
+
+    # Restart MongoDB Service
+        - name: Restart MongoDB Service
+          service:
+           name: mongodb
+           state: restarted
+           enabled: yes
+    ```

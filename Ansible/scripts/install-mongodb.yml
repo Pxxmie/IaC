@@ -1,0 +1,18 @@
+  ---
+    # YAML starts with three dashes
+
+    # agent node name/ip
+    - hosts: db
+
+    # gather facts
+    gather_facts: yes
+
+    # provide admin access
+    become: true
+
+    # provide instructions
+    tasks:
+    - name: set up mongodb in db ec2
+      apt: pkg=mongodb state=present
+
+    # ensure db is in a running state

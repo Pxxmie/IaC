@@ -1,0 +1,52 @@
+# Create a playbook to provision NodeJS
+    ---
+    # where do you want to install or run this playbook
+  - hosts: web
+
+ 
+
+  # find the facts (seed logs) - optional
+  gather_facts: yes
+
+ 
+
+  # provide admin access to this playbook / use sudo as super user
+  become: true
+
+ 
+
+  # provide the actual instructions - install NodeJS
+  tasks:
+    - name: Install the NodeSource Node.js 12.x release PPA
+      shell: "curl -sL https://deb.nodesource.com/setup_12.x | bash -"
+
+ 
+
+    - name: Install Node.js
+      apt:
+        name: nodejs
+        state: present
+
+ 
+
+    - name: Check Node.js version
+      shell: "node -v"
+      register: node_version
+
+ 
+
+    - name: Display Node.js version
+      debug:
+        msg: "Node.js version is {{ node_version.stdout }}"
+
+ 
+
+    - name: Check NPM version
+      shell: "npm -v"
+      register: npm_version
+
+ 
+
+    - name: Display NPM version
+      debug:
+        msg: "NPM version is {{ npm_version.stdout }}"

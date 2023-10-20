@@ -1,0 +1,19 @@
+# create a playbook to provision nginx web server in the web-node
+---
+#YAML starts with three dashes
+
+# where do you want to install or run this playbook?
+- hosts: web
+
+# find the facts (seed logs) - optional
+  gather_facts: yes
+
+# provide admin access to this playbook / use sudo as super user
+  become: true
+
+# provide the actual intructions - install nginx
+  tasks:
+  - name: provision/install/configure Nginx
+    apt: pkg=nginx state=present
+
+# ensure nginx is running/enable
